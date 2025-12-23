@@ -1,7 +1,7 @@
-from nlu import fillItem, fillAction
-from speech_text import speech_to_text, text_to_speech
-from machine_translation import translate
-import config
+from src.chatbot.core.nlu import fillItem, fillAction
+from src.chatbot.services.speech import speech_to_text, text_to_speech
+from src.chatbot.services.translation import translate
+from src.chatbot import config
 
 
 def assist(slots, orders, menuItems, nlp, classifier, language, data):

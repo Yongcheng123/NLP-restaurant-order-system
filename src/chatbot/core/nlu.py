@@ -1,6 +1,6 @@
 from pattern.en import number
 from math import ceil
-import config
+from src.chatbot import config
 
 THRESHOLD = config.SIMILARITY_THRESHOLD
 

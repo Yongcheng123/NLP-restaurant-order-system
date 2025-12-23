@@ -4,10 +4,10 @@ import spacy
 from transformers import pipeline
 from flask import Flask, request, Response, render_template, session
 
-import nlu
-import assistant_actions
-import web_actions
-import config
+from src.chatbot.core import nlu
+from src.chatbot.core import actions as assistant_actions
+from src.webapp import actions as web_actions
+from src.chatbot import config
 
 ACTION_WORDS = {
     "order", "add", "take", "purchase", "buy", "get", "have",

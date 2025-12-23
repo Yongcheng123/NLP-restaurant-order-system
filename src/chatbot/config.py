@@ -6,8 +6,8 @@ SPACY_MODEL = os.environ.get('SPACY_MODEL', 'en_core_web_md')
 BERT_MODEL = os.environ.get('BERT_MODEL', 'vblagoje/bert-english-uncased-finetuned-pos')
 
 # Data Files
-MENU_CSV = os.environ.get('MENU_CSV', 'menu.csv')
-DATA_CSV = os.environ.get('DATA_CSV', 'data.csv')
+MENU_CSV = os.environ.get('MENU_CSV', 'data/menu.csv')
+DATA_CSV = os.environ.get('DATA_CSV', 'data/data.csv')
 
 # NLU Configuration
 SIMILARITY_THRESHOLD = 0.6

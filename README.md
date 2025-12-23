@@ -21,8 +21,8 @@ A bilingual (English/Chinese) restaurant ordering chatbot with natural language 
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd NLP-project
+git clone https://github.com/Yongcheng123/NLP-restaurant-order-system.git
+cd NLP-restaurant-order-system
 ```
 
 2. Create and activate a virtual environment:
@@ -43,7 +43,7 @@ python -m spacy download en_core_web_md
 
 Start the Flask server:
 ```bash
-flask --app flask-webapp run
+python run_webapp.py
 ```
 
 Then navigate to `http://localhost:5000` in your browser.
@@ -52,23 +52,32 @@ Then navigate to `http://localhost:5000` in your browser.
 
 Run the chatbot directly:
 ```bash
-python MenuTranslationAssistant.py
+python run_chatbot.py
 ```
 
 ## Project Structure
 
 ```
-├── flask-webapp/          # Web application
-│   ├── static/           # CSS, JS, images
-│   └── templates/        # HTML templates
-├── nlu.py                # Natural language understanding
-├── task_manager.py       # Dialog management
-├── assistant_actions.py  # Order processing logic
-├── web_actions.py        # Web-specific handlers
-├── machine_translation.py # Translation utilities
-├── speech_text.py        # Voice I/O
-├── data.csv              # Training data
-└── menu.csv              # Restaurant menu
+├── src/
+│   ├── chatbot/              # Core chatbot logic
+│   │   ├── config.py         # Configuration settings
+│   │   ├── core/             # Core NLU and dialog
+│   │   │   ├── nlu.py        # Natural language understanding
+│   │   │   ├── dialog_manager.py  # Dialog flow management
+│   │   │   └── actions.py    # Order processing actions
+│   │   └── services/         # External services
+│   │       ├── translation.py  # Language translation
+│   │       └── speech.py     # Speech I/O
+│   └── webapp/               # Web application
+│       ├── app/              # Flask application
+│       └── actions.py        # Web-specific handlers
+├── data/                     # Data files
+│   ├── menu.csv             # Restaurant menu
+│   └── data.csv             # Training data
+├── docs/                     # Documentation
+├── examples/                 # Usage examples
+├── run_chatbot.py           # CLI entry point
+└── run_webapp.py            # Web app entry point
 ```
 
 ## Supported Commands

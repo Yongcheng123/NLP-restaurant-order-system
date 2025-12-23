@@ -5,11 +5,11 @@
 ### Starting the Server
 
 ```bash
-# Set up environment
+# Set up environment (optional)
 export SECRET_KEY="your-secret-key-here"
 
 # Run the Flask app
-flask --app flask-webapp run
+python run_webapp.py
 
 # Access at http://localhost:5000
 ```
@@ -47,7 +47,7 @@ Bot: [Shows checkout page with order summary]
 ### Running the CLI
 
 ```bash
-python MenuTranslationAssistant.py
+python run_chatbot.py
 ```
 
 ### Sample Session
@@ -103,8 +103,8 @@ Bot: 还需要什么吗？ (What else do you need?)
 ```python
 import spacy
 from transformers import pipeline
-import nlu
-import config
+from src.chatbot.core import nlu
+from src.chatbot import config
 
 # Load models
 nlp = spacy.load(config.SPACY_MODEL)
@@ -148,7 +148,7 @@ for test in test_cases:
 
 ### Menu Customization
 
-Edit `menu.csv` to add your own items:
+Edit `data/menu.csv` to add your own items:
 
 ```csv
 id,code,name,category,price

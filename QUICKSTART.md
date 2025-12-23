@@ -33,7 +33,7 @@ python -m spacy download en_core_web_md
 export SECRET_KEY="your-production-secret-key"
 
 # Start the server
-flask --app flask-webapp run
+python run_webapp.py
 
 # Open browser to http://localhost:5000
 ```
@@ -41,7 +41,7 @@ flask --app flask-webapp run
 ## Run Command Line Version
 
 ```bash
-python MenuTranslationAssistant.py
+python run_chatbot.py
 ```
 
 ## Basic Commands

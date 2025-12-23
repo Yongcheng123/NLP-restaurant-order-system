@@ -1,5 +1,5 @@
-from speech_text import *
-from machine_translation import translate
+from src.chatbot.services.speech import speech_to_text, text_to_speech
+from src.chatbot.services.translation import translate
 import tkinter as tk
 from tkinter import ttk
 

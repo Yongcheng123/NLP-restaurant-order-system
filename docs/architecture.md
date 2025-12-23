@@ -2,11 +2,40 @@
 
 ## Overview
 
-The Restaurant Ordering System is built with a modular architecture separating concerns between NLU, dialog management, and presentation layers.
+The Restaurant Ordering System is built with a modular architecture separating concerns between NLU, dialog management, and presentation layers. The codebase is organized into clear packages for maintainability and scalability.
+
+## Directory Structure
+
+```
+src/
+├── chatbot/                 # Core chatbot functionality
+│   ├── config.py           # Centralized configuration
+│   ├── core/               # Core business logic
+│   │   ├── nlu.py         # Natural Language Understanding
+│   │   ├── dialog_manager.py  # Conversation flow management
+│   │   └── actions.py     # Order processing actions
+│   ├── services/           # External service integrations
+│   │   ├── translation.py # Machine translation
+│   │   └── speech.py      # Speech recognition/synthesis
+│   └── models/             # Data models (future)
+└── webapp/                src/chatbot/core/dialogWeb application
+    ├── app/                # Flask application
+    │   ├── __init__.py    # App factory
+    │   ├── static/        # CSS, JS, images
+    │   └── templates/     # HTML templates
+    └── actions.py          # Web-specific handlers
+
+data/                        # Data files
+├── menu.csv                # Restaurant menu
+└── data.csv                # Training/reference data
+
+run_chatbot.py              # CLI entry point
+run_webapp.py               # Web app entry point
+```
 
 ## Components
 
-### 1. Natural Language Understanding (`nlu.py`)
+### 1. Natural Language Understanding (`src/chatbot/core/nlu.py`)
 
 Handles intent recognition and entity extraction using:
 - spaCy for NLP processing and similarity matching
@@ -30,7 +59,7 @@ Manages conversation flow and slot filling:
 slots = [action, items, quantities, spice_level, drink]
 ```
 
-### 3. Assistant Actions (`assistant_actions.py`)
+### 3. Assistant Actions (`src/chatbot/core/actions.py`)
 
 Executes user commands:
 - `addOrder()`: Adds items to the cart
@@ -38,7 +67,7 @@ Executes user commands:
 - `queryMenu()`: Searches menu
 - `completeOrder()`: Finalizes transaction
 
-### 4. Web Interface (`flask-webapp/`)
+### 4. Web Interface (`src/webapp/`)
 
 Flask application providing:
 - Real-time chat interface
@@ -46,11 +75,11 @@ Flask application providing:
 - Shopping cart management
 - Checkout flow
 
-### 5. Translation (`machine_translation.py`)
+### 5. Translation (`src/chatbot/services/translation.py`)
 
 Handles bilingual support for English and Chinese.
 
-### 6. Speech Interface (`speech_text.py`)
+### 6. Speech Interface (`src/chatbot/services/speech.py`)
 
 Provides voice I/O capabilities using:
 - Google Text-to-Speech (gTTS)
@@ -66,15 +95,25 @@ Translation/Speech Processing (if needed)
 
 ## Configuration
 
-Centralized configuration in `config.py`:
+Centralized configuration in `src/chatbot/config.py`:
 - Model settings
-- File paths
+- File paths (now in data/ directory)
 - NLU thresholds
 - Spice level mappings
 
+All paths are configurable via environment variables for different deployment scenarios.
+
 ## Extension Points
 
-- Add new intents in `nlu.py` action lists
-- Extend menu items in `menu.csv`
-- Add language support in `machine_translation.py`
-- Customize UI in Flask templates
+- Add new intents in `src/chatbot/core/nlu.py` action lists
+- Extend menu items in `data/menu.csv`
+- Add language support in `src/chatbot/services/translation.py`
+- Customize UI in Flask templates under `src/webapp/app/templates/`
+
+## Benefits of New Structure
+
+1. **Clear Separation**: Core logic separated from web interface
+2. **Easier Testing**: Each module can be tested independently
+3. **Scalability**: Easy to add new interfaces (mobile app, API)
+4. **Maintainability**: Related code grouped together
+5. **Professional**: Follows Python package best practices
