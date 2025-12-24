@@ -12,7 +12,7 @@ Get up and running with the Restaurant Ordering System in 5 minutes.
 
 ```bash
 # Clone the repository
-git clone <(https://github.com/Yongcheng123/NLP-restaurant-order-system.git)>
+git clone (https://github.com/Yongcheng123/NLP-restaurant-order-system.git)
 cd NLP-project
 
 # Create virtual environment
